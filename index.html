@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trilha do Código — Diário de Jornada</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Textura sutil de fundo -->
+  <div class="bg-ornament" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-shield">⚔️</div>
+        <div>
+          <h1 class="brand-title">Trilha do Código</h1>
+          <p class="brand-sub">Diário de Jornada • Full Stack</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button id="btnExpandAll" class="btn btn-ghost">Expandir tudo</button>
+        <button id="btnCollapseAll" class="btn btn-ghost">Recolher</button>
+        <button id="btnReset" class="btn btn-danger-ghost" title="Zerar progresso">Reiniciar</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Painel do Aventureiro -->
+    <section class="hero">
+      <div class="hero-parchment">
+        <div class="hero-left">
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarEl">🛡️</div>
+            <div class="avatar-ring"></div>
+          </div>
+          <div class="hero-titles">
+            <span class="kicker">Nível <span id="levelNum">1</span> • <span id="levelTitle">Aprendiz</span></span>
+            <h2 id="heroGreeting">Bem-vindo, Aprendiz</h2>
+            <p id="heroQuote" class="hero-quote">“Cada linha de código é um passo na jornada.”</p>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="xp-block">
+            <div class="xp-head">
+              <span class="xp-label">Progresso da Jornada</span>
+              <span class="xp-value"><strong id="totalPercent">0%</strong> <span id="totalFraction">0 / 0</span></span>
+            </div>
+            <div class="xp-bar">
+              <div id="xpFill" class="xp-fill" style="width:0%"></div>
+              <div class="xp-bar-shine"></div>
+            </div>
+            <div class="xp-meta">
+              <span><i>✧</i> <span id="xpPoints">0</span> XP</span>
+              <span>Próximo título: <strong id="nextTitle">Escudeiro</strong></span>
+            </div>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-num" id="statDone">0</span>
+              <span class="stat-label">Missões<br>Completas</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" id="statBlocks">0/13</span>
+              <span class="stat-label">Blocos<br>Concluídos</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num" id="statRemaining">0</span>
+              <span class="stat-label">Tarefas<br>Restantes</span>
+            </div>
+            <div class="stat highlight">
+              <span class="stat-num" id="statStreak">1</span>
+              <span class="stat-label">Dias de<br>Jornada</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Barra de níveis -->
+      <div class="level-track" id="levelTrack"></div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="toolbar">
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Buscar bloco ou tópico... (ex: React, SQL)" />
+      </div>
+      <div class="filters" role="tablist">
+        <button class="chip active" data-filter="all">Todos</button>
+        <button class="chip" data-filter="progress">Em progresso</button>
+        <button class="chip" data-filter="done">Concluídos</button>
+        <button class="chip" data-filter="todo">Pendentes</button>
+      </div>
+    </section>
+
+    <!-- Legenda -->
+    <p class="legend">Marque os pergaminhos para ganhar XP. O progresso é salvo automaticamente no seu navegador.</p>
+
+    <!-- Grid de Blocos -->
+    <section id="blocksGrid" class="grid"></section>
+
+    <footer class="footer">
+      <p>Feito com <span class="heart">♥</span> para sua jornada Full Stack — progresso salvo em <code>localStorage</code>. Edite <code>js/data.js</code> para personalizar a trilha.</p>
+    </footer>
+  </main>
+
+  <!-- Modal de conquista -->
+  <div id="modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <div class="modal-icon">🏆</div>
+      <h3 id="modalTitle">Missão Cumprida!</h3>
+      <p id="modalDesc">Você concluiu um bloco da jornada.</p>
+      <p id="modalQuote" class="modal-quote"></p>
+      <button id="modalClose" class="btn btn-primary">Continuar Jornada</button>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
