@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Trilha do Código — Diário de Jornada</title>
+  <title>Jornada Full Stack — Diário de Jornada</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Textura sutil de fundo -->
   <div class="bg-ornament" aria-hidden="true"></div>
+  <div class="fireflies" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
 
-  <!-- Header -->
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand">
-        <div class="brand-shield">⚔️</div>
+        <div class="brand-shield" aria-hidden="true">✦</div>
         <div>
-          <h1 class="brand-title">Trilha do Código</h1>
-          <p class="brand-sub">Diário de Jornada • Full Stack</p>
+          <h1 class="brand-title">Jornada Full Stack</h1>
+          <p class="brand-sub">Trilha de evolução do aventureiro</p>
         </div>
       </div>
       <div class="topbar-actions">
@@ -30,89 +29,178 @@
     </div>
   </header>
 
-  <main class="container">
-    <!-- Painel do Aventureiro -->
-    <section class="hero">
-      <div class="hero-parchment">
-        <div class="hero-left">
-          <div class="avatar-wrap">
-            <div class="avatar" id="avatarEl">🛡️</div>
-            <div class="avatar-ring"></div>
-          </div>
-          <div class="hero-titles">
-            <span class="kicker">Nível <span id="levelNum">1</span> • <span id="levelTitle">Aprendiz</span></span>
-            <h2 id="heroGreeting">Bem-vindo, Aprendiz</h2>
-            <p id="heroQuote" class="hero-quote">“Cada linha de código é um passo na jornada.”</p>
-          </div>
+  <!-- HERO — portal panorâmico -->
+  <section class="hero">
+    <div class="hero-scenic" aria-hidden="true">
+      <div class="hero-scenic-fallback" aria-hidden="true"></div>
+      <img class="hero-image" src="public/images/fantasy/hero/journey-landscape.webp" alt="Vale luminoso com grande árvore, campo florido, rio, vila e castelo ao fundo" width="1600" height="560" loading="eager" decoding="async" onerror="console.error('Hero load failed:', this.src); this.style.border='2px solid #B86F4B'" />
+      <div class="hero-scenic-overlay" aria-hidden="true"></div>
+      <div class="hero-scenic-fade" aria-hidden="true"></div>
+    </div>
+    <!-- Painel de boas-vindas sobreposto -->
+    <div class="welcome-panel">
+      <div class="welcome-left">
+        <div class="avatar-wrap">
+          <div class="avatar" id="avatarEl">🛡️</div>
+          <div class="avatar-ring"></div>
         </div>
-
-        <div class="hero-right">
-          <div class="xp-block">
-            <div class="xp-head">
-              <span class="xp-label">Progresso da Jornada</span>
-              <span class="xp-value"><strong id="totalPercent">0%</strong> <span id="totalFraction">0 / 0</span></span>
-            </div>
-            <div class="xp-bar">
-              <div id="xpFill" class="xp-fill" style="width:0%"></div>
-              <div class="xp-bar-shine"></div>
-            </div>
-            <div class="xp-meta">
-              <span><i>✧</i> <span id="xpPoints">0</span> XP</span>
-              <span>Próximo título: <strong id="nextTitle">Escudeiro</strong></span>
-            </div>
+        <div class="welcome-titles">
+          <span class="kicker">Nível <span id="levelNum">1</span> • <span id="levelTitle">Aprendiz</span></span>
+          <h2 id="heroGreeting">Bem-vindo, Aprendiz</h2>
+          <p id="heroQuote" class="hero-quote">“Cada linha de código é um passo na jornada.”</p>
+        </div>
+      </div>
+      <div class="welcome-right">
+        <div class="xp-block">
+          <div class="xp-head">
+            <span class="xp-label">Progresso da Jornada</span>
+            <span class="xp-value"><strong id="totalPercent">0%</strong> <span id="totalFraction">0 / 0</span></span>
           </div>
-
-          <div class="stats">
-            <div class="stat">
-              <span class="stat-num" id="statDone">0</span>
-              <span class="stat-label">Missões<br>Completas</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num" id="statBlocks">0/13</span>
-              <span class="stat-label">Blocos<br>Concluídos</span>
-            </div>
-            <div class="stat">
-              <span class="stat-num" id="statRemaining">0</span>
-              <span class="stat-label">Tarefas<br>Restantes</span>
-            </div>
-            <div class="stat highlight">
-              <span class="stat-num" id="statStreak">1</span>
-              <span class="stat-label">Dias de<br>Jornada</span>
-            </div>
+          <div class="xp-bar">
+            <div id="xpFill" class="xp-fill" style="width:0%"></div>
+            <div class="xp-bar-shine"></div>
+          </div>
+          <div class="xp-meta">
+            <span><i>✧</i> <span id="xpPoints">0</span> XP</span>
+            <span>Próximo título: <strong id="nextTitle">Escudeiro</strong></span>
+          </div>
+          <div class="hero-dual">
+            <span class="hero-dual-item"><strong id="heroActivePct">0%</strong> nível atual</span>
+            <span class="hero-dual-sep">•</span>
+            <span class="hero-dual-item"><strong id="heroJourneyPct">0%</strong> jornada completa</span>
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Barra de níveis -->
+  <main class="page">
+    <div class="page-atmosphere" aria-hidden="true"></div>
+    <!-- Resumo da jornada — 4 indicadores leves -->
+    <section class="journey-summary" aria-label="Resumo da jornada">
+      <h2 class="section-title">Sua jornada</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-num" id="statDone">0</span>
+          <span class="summary-label">Missões<br>Completas</span>
+        </div>
+        <span class="summary-sep" aria-hidden="true"></span>
+        <div class="summary-item">
+          <span class="summary-num" id="statBlocks">0/0</span>
+          <span class="summary-label">Blocos<br>Concluídos</span>
+        </div>
+        <span class="summary-sep" aria-hidden="true"></span>
+        <div class="summary-item">
+          <span class="summary-num" id="statRemaining">0</span>
+          <span class="summary-label">Tarefas<br>Restantes</span>
+        </div>
+        <span class="summary-sep" aria-hidden="true"></span>
+        <div class="summary-item highlight">
+          <span class="summary-num" id="statStreak">1</span>
+          <span class="summary-label">Dias de<br>Jornada</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Progressão de títulos — linha contínua -->
+    <section class="title-progression" aria-label="Progressão de títulos">
       <div class="level-track" id="levelTrack"></div>
     </section>
 
-    <!-- Filtros -->
+    <!-- 3 níveis ilustrados -->
+    <section class="journey-nav" aria-label="Seletor de nível">
+      <div class="journey-nav-header">
+        <span class="ornament-leaf">❦</span>
+        <h2 class="journey-nav-title">Escolha sua trilha</h2>
+        <span class="ornament-leaf">❦</span>
+      </div>
+      <p class="journey-nav-sub">Cada reino representa uma etapa da jornada.</p>
+      <div id="journeySelector" class="journey-tabs" role="tablist"></div>
+    </section>
+
+    <!-- Cabeçalho do nível atual — amplo e limpo, sem painel lateral -->
+    <section class="level-hero">
+      <div class="level-hero-card">
+        <div class="level-hero-main">
+          <span class="level-kicker" id="currentLevelKicker">NÍVEL I</span>
+          <h2 id="currentLevelTitle" class="level-hero-title">Nível 1 — Iniciante</h2>
+          <p id="currentLevelSubtitle" class="level-hero-subtitle">Aprendiz do Código</p>
+          <p id="currentLevelDesc" class="level-hero-desc"></p>
+          <div class="level-hero-progress">
+            <span class="progress-label">Progresso do nível</span>
+            <div class="level-hero-bar">
+              <div id="currentLevelFill" class="level-hero-fill" style="width:0%"></div>
+            </div>
+            <div class="level-hero-stats">
+              <span><strong id="currentLevelPct">0%</strong></span>
+              <span id="currentLevelFrac">0/0 tarefas</span>
+              <span id="currentLevelBlocks">0/0 blocos</span>
+              <span class="journey-badge">Jornada: <strong id="journeyPct">0%</strong></span>
+            </div>
+            <div class="level-summary">
+              <div class="level-summary-row">
+                <span class="summary-label">Conteúdo:</span>
+                <strong id="summaryContentPct">0%</strong>
+                <span class="summary-divider">•</span>
+                <span class="summary-label">Missão Principal:</span>
+                <span id="summaryMandatoryStatus" class="badge">Não iniciado</span>
+                <span id="summaryMandatoryProgress" class="summary-pct">0% (0/0)</span>
+              </div>
+              <div class="level-summary-row">
+                <span class="summary-label">Missão Desafio:</span>
+                <span id="summaryChallengeStatus" class="badge">Não iniciado • opcional</span>
+                <span id="summaryChallengeProgress" class="summary-pct">0% (0/0)</span>
+                <span class="summary-divider">•</span>
+                <span class="summary-label">Status:</span>
+                <span id="summaryLevelStatus" class="level-status-badge">Em andamento</span>
+              </div>
+            </div>
+            <p id="currentLevelMsg" class="level-hero-msg"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Busca + filtros — barra simples sem container pesado -->
     <section class="toolbar">
       <div class="search-wrap">
         <span class="search-icon">⌕</span>
-        <input id="searchInput" type="search" placeholder="Buscar bloco ou tópico... (ex: React, SQL)" />
+        <input id="searchInput" type="search" placeholder="Buscar missão ou tópico..." />
       </div>
       <div class="filters" role="tablist">
         <button class="chip active" data-filter="all">Todos</button>
         <button class="chip" data-filter="progress">Em progresso</button>
-        <button class="chip" data-filter="done">Concluídos</button>
         <button class="chip" data-filter="todo">Pendentes</button>
+        <button class="chip" data-filter="done">Concluídos</button>
       </div>
     </section>
+    <p class="legend">Marque os pergaminhos para ganhar XP. O progresso é salvo automaticamente no seu navegador — separado por nível.</p>
 
-    <!-- Legenda -->
-    <p class="legend">Marque os pergaminhos para ganhar XP. O progresso é salvo automaticamente no seu navegador.</p>
-
-    <!-- Grid de Blocos -->
     <section id="blocksGrid" class="grid"></section>
+
+    <!-- Transição narrativa -->
+    <section class="narrative-transition" aria-hidden="true">
+      <span>✦</span><span class="line"></span><span>✦</span>
+      <h2>O teste do aprendiz</h2>
+      <p>Você percorreu as missões deste capítulo.<br>Agora é hora de provar o que aprendeu.</p>
+      <span>✦</span><span class="line short"></span><span>✦</span>
+    </section>
+
+    <section id="projectsSection" class="projects-section"></section>
+
+    <!-- Encerramento do nível -->
+    <section class="level-closure" aria-label="Encerramento do nível">
+      <div class="closure-shield">✦</div>
+      <h2 id="closureTitle" class="closure-title">NÍVEL I — INICIANTE</h2>
+      <p id="closureStatus" class="closure-status">Em andamento — 0%</p>
+      <p id="closureDesc" class="closure-desc">Complete todas as missões e a Missão Principal para conquistar o próximo título.</p>
+    </section>
 
     <footer class="footer">
       <p>Feito com <span class="heart">♥</span> para sua jornada Full Stack — progresso salvo em <code>localStorage</code>. Edite <code>js/data.js</code> para personalizar a trilha.</p>
     </footer>
   </main>
 
-  <!-- Modal de conquista -->
   <div id="modal" class="modal hidden" aria-hidden="true">
     <div class="modal-backdrop"></div>
     <div class="modal-card">
